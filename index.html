@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Секрет</title>
+    <style>
+        body { margin: 0; height: 100vh; background-color: #0a1128; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: 'Arial', sans-serif; color: white; }
+        h1 { font-size: 1.8em; margin-bottom: 30px; text-align: center; padding: 0 20px; }
+        .input-group { display: flex; flex-direction: column; gap: 15px; width: 80%; max-width: 300px; }
+        input { padding: 15px; border-radius: 10px; border: 2px solid #1e3a8a; background: #152046; color: white; font-size: 1.2em; text-align: center; outline: none; }
+        button { padding: 15px; border-radius: 10px; border: none; background: #2563eb; color: white; font-size: 1.2em; cursor: pointer; }
+        .error { color: #f87171; margin-top: 10px; display: none; }
+    </style>
+</head>
+<body>
+    <h1>Как я называл Амину</h1>
+    <div class="input-group">
+        <input type="text" id="pass" placeholder="Введи пароль...">
+        <button onclick="checkPass()">Войти</button>
+        <div class="error" id="error">Неправильно. Попробуй ещё раз.</div>
+    </div>
+    <script>
+        function checkPass() {
+            const correctPassword = "армина"; 
+            const userInput = document.getElementById('pass').value.trim().toLowerCase();
+            if (userInput === correctPassword) {
+                window.location.href = "main.html"; 
+            } else {
+                document.getElementById('error').style.display = "block";
+                document.getElementById('pass').value = "";
+            }
+        }
+        document.getElementById('pass').addEventListener('keypress', (e) => { if (e.key === 'Enter') checkPass(); });
+    </script>
+</body>
+</html>
